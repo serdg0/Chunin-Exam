@@ -1,2 +1,5 @@
-<h1><%= link_to @short %></h1>
-<%= link_to "Go Home", new_domain_path %>
+<div data-controller="copy">
+  <input type="text" value="<%= @short %>" data-copy-target="url" readonly/>
+  <button data-action="copy#copy" data-copy-target="button">Copy</button>
+</div>
+<%= link_to "Back", new_domain_path %>

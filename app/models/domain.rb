@@ -5,8 +5,6 @@ class Domain < ApplicationRecord
   before_create :extract_domain
   before_create :generate_short_subdomain
 
-  # Ex:- scope :active, -> {where(:active => true)
-
   def self.top_queries
     Domain.group(:domain).count.sort_by { |k, v| -v }
   end

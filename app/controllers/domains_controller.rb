@@ -21,7 +21,7 @@ class DomainsController < ApplicationController
 
   def show
     domain = Domain.find(params[:id])
-    @short = domain.short_subdomain
+    @short = request.base_url + "/" + domain.short_subdomain
   end
 
   def redirect
