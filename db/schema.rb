@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_202055) do
+ActiveRecord::Schema.define(version: 2021_03_29_201511) do
 
   create_table "domains", force: :cascade do |t|
     t.string "domain"
-    t.string "subdomain"
     t.string "short_subdomain"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "url"
   end
 
 end
