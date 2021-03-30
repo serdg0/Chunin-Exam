@@ -12,10 +12,9 @@
 
   <body>
     <% flash.each do |type, msg| %>
-      <h1>
-        <%= msg %>
-      </h1>
+      <p><%= msg %></p>
     <% end %>
     <%= yield %>
+    <%= render 'footer' %>
   </body>
 </html>

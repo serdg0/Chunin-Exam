@@ -5,6 +5,7 @@ class DomainsController < ApplicationController
 
   def new
     @domain = Domain.new
+    @top_queries = Domain.top_queries
   end
 
   def create
