@@ -1,7 +1,7 @@
 class Url < ApplicationRecord
   belongs_to :domain
 
-  validates :full_url, format: { with: /\A#{URI::regexp}\z/ }
+  validates :full_url, presence: true
 
   before_create :generate_short_url
 
