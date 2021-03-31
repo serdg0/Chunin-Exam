@@ -1,9 +1,9 @@
-<h5 class="mt-5">Most Visited Domains</h5>
+<h5 class="mt-5">Top 10 Domains</h5>
 <table class="overflow-auto h-25">
   <% @top_queries.each do |domain| %>
     <tr>
-      <td class="w-25"><%= domain[0] %></td>
-      <td class="w-25"><%= domain[1] %> visits</td>
+      <td class="w-25"><%= domain.domain %></td>
+      <td class="w-25"><%= domain.visits %> visits</td>
     </tr>
   <% end %>
 </table>

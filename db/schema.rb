@@ -10,14 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_201511) do
+ActiveRecord::Schema.define(version: 2021_03_31_191916) do
 
   create_table "domains", force: :cascade do |t|
     t.string "domain"
-    t.string "short_subdomain"
-    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "visits"
   end
 
+  create_table "urls", force: :cascade do |t|
+    t.integer "domain_id", null: false
+    t.string "full_url"
+    t.string "short_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["domain_id"], name: "index_urls_on_domain_id"
+  end
+
+  add_foreign_key "urls", "domains"
 end
