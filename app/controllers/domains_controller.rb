@@ -1,11 +1,8 @@
 class DomainsController < ApplicationController
-  
-  def index
-  end
+  before_action :get_top_queries, only: [:new, :show]
 
   def new
     @domain = Domain.new
-    @top_queries = Domain.top_queries
   end
 
   def create
@@ -30,6 +27,10 @@ class DomainsController < ApplicationController
   end
 
   private
+
+  def get_top_queries
+    @top_queries = Domain.top_queries
+  end
 
   def domain_params
     params.require(:domain).permit(:url)

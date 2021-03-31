@@ -1,5 +1,8 @@
-<div data-controller="copy">
-  <input type="text" value="<%= @short %>" data-copy-target="url" readonly/>
-  <button data-action="copy#copy" data-copy-target="button">Copy</button>
+<div class="d-flex flex-column align-items center-absolute h-75 justify-content-center">
+  <%= render 'shared/title' %>
+  <div data-controller="copy">
+    <input type="text" value="<%= @short %>" data-copy-target="url" readonly/>
+    <button data-action="copy#copy" data-copy-target="button" class="button-main">Copy</button>
+  </div>
+  <%= render 'shared/most_visits', locals: { top_queries: @top_queries } %>
 </div>
-<%= link_to "Back", new_domain_path %>

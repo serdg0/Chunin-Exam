@@ -1,16 +1,8 @@
-<h1>Url Shortener</h1>
-
-<%= form_with model: @domain do |form| %>
-  <%= form.text_field :url %>
-  <%= form.submit "Shorten Url" %>
-<% end %>
-
-<h2>Most Visited Domains</h2>
-<table>
-  <% @top_queries.each do |domain| %>
-    <tr>
-      <td><%= domain[0] %></td>
-      <td><%= domain[1] %></td>
-    </tr>
+<div class="d-flex flex-column align-items center-absolute h-75 justify-content-center">
+  <%= render "shared/title" %>
+  <%= form_with model: @domain do |form| %>
+    <%= form.text_field :url %>
+    <%= form.submit "Shorten Url", class: "button-main" %>
   <% end %>
-</table>
+  <%= render "shared/most_visits", locals: { top_queries: @top_queries } %>
+</div>

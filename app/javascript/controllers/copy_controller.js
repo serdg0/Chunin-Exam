@@ -9,6 +9,6 @@ export default class extends Controller {
     this.buttonTarget.innerHTML = "Copied!"
     setTimeout(() => {
       this.buttonTarget.innerHTML = "Copy"
-    }, 5000);
+    }, 3000);
   }
 }
