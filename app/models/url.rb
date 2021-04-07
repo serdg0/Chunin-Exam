@@ -1,7 +1,9 @@
 class Url < ApplicationRecord
   belongs_to :domain
 
-  validates :full_url, presence: true
+  VALID_URL_REGEX = /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?\Z/i
+
+  validates :full_url, presence: true, format: { with: VALID_URL_REGEX }
 
   before_create :generate_short_url
 

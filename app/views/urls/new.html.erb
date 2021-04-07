@@ -1,6 +1,6 @@
 <div class="d-flex flex-column align-items center-absolute h-75 justify-content-center">
   <%= render "shared/title" %>
-  <%= form_with model: @url do |form| %>
+  <%= form_with model: @url, id: 'new_url' do |form| %>
     <%= form.text_field :full_url %>
     <%= form.submit "Shorten Url", class: "button-main" %>
   <% end %>

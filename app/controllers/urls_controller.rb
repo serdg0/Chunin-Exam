@@ -8,6 +8,7 @@ class UrlsController < ApplicationController
   def create
     url = Url.new(url_params)
     url.domain = add_visit_or_create_domain
+    url.full_url = prepend_scheme(url.full_url)
 
     if url.valid? && url.domain.valid?
       url.save!
@@ -36,8 +37,6 @@ class UrlsController < ApplicationController
   def add_visit_or_create_domain
     domain = Domain.find_by(domain: extract_domain)
     if domain
-      p domain
-      p domain.errors.messages
       domain.update!(visits: domain.visits + 1)
       domain
     else
@@ -46,11 +45,15 @@ class UrlsController < ApplicationController
   end
 
   def extract_domain
-    URI(url_params[:full_url]).host
+    URI(prepend_scheme(url_params[:full_url])).host
   end
 
   def create_domain(domain)
     Domain.create!(domain: domain, visits: 1) if domain
+  end
+
+  def prepend_scheme(url)
+    URI(url).scheme.nil? ? "https://#{url}" : url 
   end
 
   def url_params

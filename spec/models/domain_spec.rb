@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Domain, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "associations" do
+    it { have_many :urls }
+  end
+  
+  context "validations" do
+    it { validate_presence_of :domain }
+  end
 end
